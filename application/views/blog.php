@@ -11,7 +11,11 @@
 
     <?php foreach ($blogs as $key => $blog): ?>
         <div class="blog">
-            <h2><?= $blog['title']; ?></h2>
+            <h2>
+                <a href="<?= base_url('blog/detail/'.$blog['url']); ?>">
+                    <?= $blog['title']; ?>
+                </a>
+            </h2>
 
             <?= $blog['content']; ?>
         </div>
