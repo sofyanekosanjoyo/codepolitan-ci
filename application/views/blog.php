@@ -12,7 +12,7 @@
     <?php foreach ($blogs as $key => $blog): ?>
         <div class="blog">
             <h2>
-                <a href="<?= base_url('blog/detail/'.$blog['url']); ?>">
+                <a href="<?= site_url('blog/detail/'.$blog['url']); ?>">
                     <?= $blog['title']; ?>
                 </a>
             </h2>

@@ -1,3 +1,3 @@
-<h1><?= $blog['tittle']; ?></h1>
+<h1><?= $blog['title']; ?></h1>
 
 <?= $blog['content']; ?>
