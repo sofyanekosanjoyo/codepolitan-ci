@@ -30,6 +30,33 @@ class Blog extends CI_Controller {
 
         
     }
+
+    public function add()
+    {
+        if($this->input->post())
+        {
+            $data['title'] = $this->input->post('title');
+            $data['content'] = $this->input->post('content');
+            $data['url'] = $this->input->post('url');
+
+            print_r($data);
+            
+            $id = $this->Blog_model->insertBlog($data);
+
+            if($id){
+                echo "Data berhasil disimpan";
+            } else {
+                echo "Data gagal disimpan";
+            }
+        }
+
+        $this->load->view('form_add');
+    }
+
+    public function edit($id)
+    {
+        $this->load->view('form_edit');
+    }
 }
 
 ?>
