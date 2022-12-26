@@ -41,6 +41,7 @@ class Blog extends CI_Controller {
 
             if($id){
                 echo "Data berhasil disimpan";
+                redirect('/');
             } else {
                 echo "Data gagal disimpan";
             }
@@ -64,8 +65,10 @@ class Blog extends CI_Controller {
             
             $result = $this->Blog_model->updateBlog($id, $post);
 
-            if($result){
+            if($result)
+            {
                 echo "Data berhasil disimpan";
+                redirect('/');
             } else {
                 echo "Data gagal disimpan";
             }

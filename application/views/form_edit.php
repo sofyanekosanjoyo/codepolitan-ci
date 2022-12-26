@@ -1,29 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Form Edit Artikel</title>
-</head>
-<body>
-    <h1>Form Edit Artikel</h1>
-    <form method="POST">
-        <div>
-            <label for="title">Judul</label>
-            <input type="text" name="title" id="title" value="<?= $blog['title']; ?>">
+<?php $this->load->view('partials/header'); ?>
+
+    <!-- Page Header-->
+    <header class="masthead" style="background-image: url('<?= base_url(); ?>/assets/assets/img/contact-bg.jpg')">
+        <div class="container position-relative px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    <div class="page-heading">
+                        <h2>Edit Artikel</h2>
+                        <span class="subheading">Silahkan tulis artikel anda.</span>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div>
-            <label for="url">URL</label>
-            <input type="text" name="url" id="url" value="<?= $blog['url']; ?>">
+    </header>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <h1>Form Edit Artikel</h1>
+                <form method="POST">
+                    <div class="form-group">
+                        <label for="title">Judul</label>
+                        <input class="form-control" type="text" name="title" id="title" value="<?= $blog['title']; ?>">
+                    </div>
+                    <div class="form-group">
+                        <label for="url">URL</label>
+                        <input class="form-control" type="text" name="url" id="url" value="<?= $blog['url']; ?>">
+                    </div>
+                    <div class="form-group">
+                        <label for="content">Konten</label>
+                        <textarea class="form-control mb-2" name="content" id="content" cols="30" rows="10">
+                            <?= $blog['content']; ?>
+                        </textarea>
+                    </div>
+                    <button class="btn btn-primary" type="submit">Simpan Artikel</button>
+                </form>
+            </div>
         </div>
-        <div>
-            <label for="content">Konten</label>
-            <textarea name="content" id="content" cols="30" rows="10">
-                <?= $blog['content']; ?>
-            </textarea>
-        </div>
-        <button type="submit">Simpan Artikel</button>
-    </form>
-</body>
-</html>
+    </div>
+
+<?php $this->load->view('partials/footer'); ?>
