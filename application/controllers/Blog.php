@@ -21,14 +21,10 @@ class Blog extends CI_Controller {
 
     public function detail($url)
     {
-        $query = $this->db->query('SELECT * FROM blog WHERE url = "'.$url.'"');
-
-        // $query = $this->Blog_model->getSingleBlog($url);
+        $query = $this->Blog_model->getSingleBlog('url', $url);
         $data['blog'] = $query->row_array();
 
         $this->load->view('detail', $data);
-
-        
     }
 
     public function add()
@@ -55,7 +51,32 @@ class Blog extends CI_Controller {
 
     public function edit($id)
     {
-        $this->load->view('form_edit');
+        $query = $this->Blog_model->getSingleBlog('id', $id);
+        $data['blog'] = $query->row_array();
+
+        if($this->input->post())
+        {
+            $post['title'] = $this->input->post('title');
+            $post['url'] = $this->input->post('url');
+            $post['content'] = $this->input->post('content');
+
+            print_r($data);
+            
+            $result = $this->Blog_model->updateBlog($id, $post);
+
+            if($result){
+                echo "Data berhasil disimpan";
+            } else {
+                echo "Data gagal disimpan";
+            }
+        }
+        $this->load->view('form_edit', $data);
+    }
+
+    public function delete($id)
+    {
+        $this->Blog_model->deleteBlog($id);
+        redirect('/');
     }
 }
 

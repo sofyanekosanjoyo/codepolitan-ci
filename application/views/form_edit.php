@@ -11,15 +11,17 @@
     <form method="POST">
         <div>
             <label for="title">Judul</label>
-            <input type="text" name="title" id="title">
+            <input type="text" name="title" id="title" value="<?= $blog['title']; ?>">
         </div>
         <div>
             <label for="url">URL</label>
-            <input type="text" name="url" id="url">
+            <input type="text" name="url" id="url" value="<?= $blog['url']; ?>">
         </div>
         <div>
             <label for="content">Konten</label>
-            <textarea name="content" id="content" cols="30" rows="10"></textarea>
+            <textarea name="content" id="content" cols="30" rows="10">
+                <?= $blog['content']; ?>
+            </textarea>
         </div>
         <button type="submit">Simpan Artikel</button>
     </form>
