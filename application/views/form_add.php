@@ -19,18 +19,22 @@
             <div class="col-md-8">
 
                 <h1>Form Tambah Artikel</h1>
-                <?= form_open(); ?>
+                <?= form_open_multipart(); ?>
                     <div class="form-group">
                         <label for="title">Judul</label>
-                        <?= form_input('title', null, 'class="form-control" id="title"'); ?>
+                        <?= form_input('title', null, 'class="form-control mb-2" id="title"'); ?>
                     </div>
                     <div class="form-group">
                         <label for="url">URL</label>
-                        <?= form_input('url', null, 'class="form-control" id="url"'); ?>
+                        <?= form_input('url', null, 'class="form-control mb-2" id="url"'); ?>
                     </div>
                     <div class="form-group">
                         <label for="content">Konten</label>
                         <?= form_textarea('content', null, 'class="form-control mb-2" id="content"'); ?>
+                    </div>
+                    <div class="form-group">
+                        <label for="cover">Cover</label>
+                        <?= form_upload('cover', null, 'class="form-control mb-2" id="cover"'); ?>
                     </div>
                     <button class="btn btn-primary" type="submit">Simpan Artikel</button>
                 </form>
