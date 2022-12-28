@@ -73,7 +73,22 @@ class Blog extends CI_Controller {
             $post['url'] = $this->input->post('url');
             $post['content'] = $this->input->post('content');
 
-            print_r($data);
+            $config['upload_path'] = './uploads/';
+            $config['allowed_types'] = 'gif|jpg|png';
+            $config['max_size'] = 5000;
+            $config['max_width'] = 1920;
+            $config['max_height'] = 1080;
+
+            $this->load->library('upload', $config);
+
+            if (!$this->upload->do_upload('cover'))
+            {
+                    echo $this->upload->display_errors();
+            }
+            else
+            {
+                    $post['cover'] = $this->upload->data()['file_name'];
+            }
             
             $result = $this->Blog_model->updateBlog($id, $post);
 
