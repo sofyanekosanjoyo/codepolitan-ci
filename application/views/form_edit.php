@@ -18,18 +18,23 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <h1>Form Edit Artikel</h1>
+
+                <div class="alert alert-danger mb-2">
+                    <?= validation_errors(); ?>
+                </div>
+
                 <?= form_open_multipart(); ?>
                     <div class="form-group">
                         <label for="title">Judul</label>
-                        <?= form_input('title', $blog['title'], 'class="form-control" id="title"'); ?>
+                        <?= form_input('title', set_value('title', $blog['title']), 'class="form-control" id="title"'); ?>
                     </div>
                     <div class="form-group">
                         <label for="url">URL</label>
-                        <?= form_input('url', $blog['url'], 'class="form-control" id="url"'); ?>
+                        <?= form_input('url', set_value('url', $blog['url']), 'class="form-control" id="url"'); ?>
                     </div>
                     <div class="form-group">
                         <label for="content">Konten</label>
-                        <?= form_textarea('content', $blog['content'], 'class="form-control" id="content"'); ?>
+                        <?= form_textarea('content', set_value('content', $blog['content']), 'class="form-control" id="content"'); ?>
                     </div>
                     <div class="form-group">
                         <label for="cover">Cover</label>
