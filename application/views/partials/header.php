@@ -26,9 +26,14 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto py-4 py-lg-0">
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="<?= site_url(); ?>">Home</a></li>   
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="<?= site_url('blog/add'); ?>">Tambah Artikel</a></li>                        
-
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="<?= site_url(); ?>">Home</a></li>
+                        
+                        <?php if(isset($_SESSION['username'])) : ?>
+                            <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="<?= site_url('blog/add'); ?>">+ Tambah Artikel</a></li>
+                            <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="<?= site_url('blog/logout'); ?>">Logout</a></li>
+                        <?php else : ?>                        
+                            <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="<?= site_url('blog/login'); ?>">Login</a></li>                        
+                        <?php endif; ?>
                     </ul>
                 </div>
             </div>
