@@ -5,7 +5,10 @@ class Blog extends CI_Controller {
     public function __construct()
     {
         parent::__construct();        
+        
         $this->load->model('Blog_model');
+
+        $this->load->library('session');
     }
     
     public function index($offset = 0)
@@ -61,10 +64,11 @@ class Blog extends CI_Controller {
             $id = $this->Blog_model->insertBlog($data);
 
             if($id){
-                echo "Data berhasil disimpan";
+                $this->session->set_flashdata('message', ' <div class="alert alert-success">Data berhasil disimpan</div>');
                 redirect('/');
             } else {
-                echo "Data gagal disimpan";
+                $this->session->set_flashdata('message', '<div class="alert alert-danger">Data gagal disimpan</div');
+                redirect('/');
             }
         }
 
@@ -102,12 +106,12 @@ class Blog extends CI_Controller {
             
             $result = $this->Blog_model->updateBlog($id, $post);
 
-            if($result)
-            {
-                echo "Data berhasil disimpan";
+            if($result){
+                $this->session->set_flashdata('message', ' <div class="alert alert-success">Data berhasil diubah</div>');
                 redirect('/');
             } else {
-                echo "Data gagal disimpan";
+                $this->session->set_flashdata('message', '<div class="alert alert-danger">Data gagal diubah</div');
+                redirect('/');
             }
         }
         $this->load->view('form_edit', $data);
@@ -115,7 +119,16 @@ class Blog extends CI_Controller {
 
     public function delete($id)
     {
-        $this->Blog_model->deleteBlog($id);
+        $result = $this->Blog_model->deleteBlog($id);
+
+        if($result){
+            $this->session->set_flashdata('message', ' <div class="alert alert-success">Data berhasil dihapus</div>');
+            redirect('/');
+        } else {
+            $this->session->set_flashdata('message', '<div class="alert alert-danger">Data gagal dihapus</div');
+            redirect('/');
+        }
+
         redirect('/');
     }
 }

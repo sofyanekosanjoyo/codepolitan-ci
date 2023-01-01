@@ -19,6 +19,8 @@
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col-md-10 col-lg-8 col-xl-7">
 
+                    <?= $this->session->flashdata('message'); ?>
+
                 <!-- Searching-->
                 <form action="">
                     <input type="text" name="find">
@@ -35,7 +37,8 @@
                                 Posted on <?= $blog['date']; ?>
 
                                 <a href="<?= site_url('blog/edit/'.$blog['id']); ?>">Edit</a>
-                                <a href="<?= site_url('blog/delete/'.$blog['id']); ?>">Delete</a>
+                                <a href="<?= site_url('blog/delete/'.$blog['id']); ?>" 
+                                onclick="return confirm('Apakah anda yakin ingin menghapus artikel ini?')">Delete</a>
                             </p>
                             <?= $blog['content']; ?>
                         
