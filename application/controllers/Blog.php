@@ -39,12 +39,9 @@ class Blog extends CI_Controller {
             $config['max_height'] = 1080;
 
             $this->load->library('upload', $config);
+            $this->upload->do_upload('cover');
 
-            if (!$this->upload->do_upload('cover'))
-            {
-                    echo $this->upload->display_errors();
-            }
-            else
+            if (!empty($this->upload->data()['file_name']))
             {
                     $data['cover'] = $this->upload->data()['file_name'];
             }
@@ -80,12 +77,9 @@ class Blog extends CI_Controller {
             $config['max_height'] = 1080;
 
             $this->load->library('upload', $config);
+            $this->upload->do_upload('cover');
 
-            if (!$this->upload->do_upload('cover'))
-            {
-                    echo $this->upload->display_errors();
-            }
-            else
+            if (!empty($this->upload->data()['file_name']))
             {
                     $post['cover'] = $this->upload->data()['file_name'];
             }
